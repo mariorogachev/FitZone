@@ -25,7 +25,7 @@ function App() {
           <nav className="main-nav">
             {/* ***** Logo Start ***** */}
             <a href="index.html" className="logo">
-              Training<em> Studio</em>
+              Fit<em> Zone</em>
             </a>
             {/* ***** Logo End ***** */}
             {/* ***** Menu Start ***** */}
@@ -63,14 +63,17 @@ function App() {
   {/* ***** Header Area End ***** */}
   {/* ***** Main Banner Area Start ***** */}
   <div className="main-banner" id="top">
-    <video autoPlay="" muted="" loop="" id="bg-video">
-      <source src="assets/images/gym-video.mp4" type="video/mp4" />
-    </video>
+  <video autoPlay muted loop id='bg-video'>
+  <source
+    src="public/assets/images/gym-video.mp4"
+    type="video/mp4"
+  />
+</video>
     <div className="video-overlay header-text">
       <div className="caption">
         <h6>work harder, get stronger</h6>
         <h2>
-          easy with our <em>gym</em>
+          Fit <em>Zone</em>
         </h2>
         <div className="main-button scroll-to-section">
           <a href="#features">Become a member</a>
