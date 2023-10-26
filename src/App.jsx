@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -47,8 +45,8 @@ function App() {
               <li className="scroll-to-section">
                 <a href="#contact-us">Contact</a>
               </li>
-              <li className="main-button">
-                <a href="#">Sign Up</a>
+              <li  className="main-button">
+                <a href='login.html'>Sign Up</a>
               </li>
             </ul>
             <a className="menu-trigger">
@@ -65,7 +63,7 @@ function App() {
   <div className="main-banner" id="top">
   <video autoPlay muted loop id='bg-video'>
   <source
-    src="public/assets/images/gym-video.mp4"
+    src="assets/images/gym-video.mp4"
     type="video/mp4"
   />
 </video>
