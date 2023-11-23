@@ -1,24 +1,21 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import '../public/assets/css/templatemo-training-studio.css'
+import '../../public/assets/css/templatemo-training-studio.css'
 import { Link, Route, Routes } from 'react-router-dom';
-import Classes from './components/pages/Classes';
-import Main from './components/pages/Main';
-import Programs from './components/pages/Programs'
-import Schedule from './components/pages/Schedule';
-import '../public/assets/css/Navbar.css'
-import logo from '../public/assets/images/features-first-icon.png'
-import LogIn from '../src/components/Auth/Login';
-import MaybeShowNavBar from './components/MaybeShowNavBar';
+import Classes from './pages/Classes';
+import About from './pages/About';
+import Main from './pages/Main';
+import Programs from './pages/Programs'
+import Schedule from './pages/Schedule';
+import '../../public/assets/css/Navbar.css'
+import logo from '../../public/assets/images/features-first-icon.png'
+import LogIn from './Auth/Login';
 
-
-
-function App() {
+export default function NavbarComp() {
   return (
     <>
-    <MaybeShowNavBar>
-    <Navbar className='navbar' bg="white" data-bs-theme="dark">
+      <Navbar className='navbar' bg="white" data-bs-theme="dark">
         <Container>
           <Navbar.Brand className='logo' as={Link} to='/home' ><img
       src={logo}
@@ -37,7 +34,6 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      </MaybeShowNavBar>
 
       <div>
         <Routes>
@@ -52,8 +48,7 @@ function App() {
           
         </Routes>
       </div>
-      
     </>
-  )
+  );
 }
-export default App
+

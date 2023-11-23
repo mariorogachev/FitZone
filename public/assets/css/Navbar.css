@@ -1,0 +1,16 @@
+.logo{
+    font-size: 200%;
+    font-family: Georgia, serif;
+    margin-top: 1px;
+}
+.me-auto{
+    font-size: 125%;
+}
+
+.px-4{
+    background-color: #ed563b;
+    height: 60px;
+    width: 120px;
+    font-size: 20px;
+
+}
