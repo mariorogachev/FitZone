@@ -11,6 +11,7 @@ import Schedule from './pages/Schedule';
 import '../../public/assets/css/Navbar.css'
 import logo from '../../public/assets/images/features-first-icon.png'
 import LogIn from './Auth/Login';
+import RegisterForm from './Auth/Register';
 
 export default function NavbarComp() {
   return (
@@ -25,10 +26,10 @@ export default function NavbarComp() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/home'>Home</Nav.Link>
             <Nav.Link as={Link} to='/programs'>Programs</Nav.Link>
-            <Nav.Link as={Link} to='/trainer'>Trainer</Nav.Link>
             <Nav.Link as={Link} to='/schedule'>Schedule</Nav.Link>
             <Nav.Link as={Link} to='/classes' >Classes</Nav.Link>
-            <Nav.Link as={Link} to='/login' >Log In</Nav.Link>
+            <Nav.Link as={Link} to='/register' >Register</Nav.Link>
+            
            
             
           </Nav>
@@ -41,7 +42,8 @@ export default function NavbarComp() {
         <Route path='/programs' element={<Programs/>}/>
           <Route path='/classes' element={<Classes/>}/>
           <Route path='/schedule' element={<Schedule/>}/>
-          <Route path='/login' element={<LogIn/>}/>
+          <Route path='/register' element={<RegisterForm/>}/>
+          
           
         
 
