@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from '../../../public/assets/images/features-first-icon.png'
 import { database } from "../../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -6,7 +7,7 @@ import {
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../public/assets/css/RegisterForm.css";
-import '../../../public/assets/images/features-first-icon.png'
+
 
 
 function RegisterAndLogin() {
@@ -49,7 +50,7 @@ function RegisterAndLogin() {
         <div className="logo-container">
         <Link to={'/'}>
           <img
-            src="../../../public/assets/images/features-first-icon.png"
+            src={logo}
             alt="Logo"
             className="logo-image"
           />

@@ -24,7 +24,7 @@ function App() {
     <Navbar bg="light" fixed="top" collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand className='logo' as={Link} to='/'><img
-      src='../public/assets/images/features-first-icon.png'
+      src={logo}
       width="35"
       height="35"
     />Fit Zone</Navbar.Brand>
