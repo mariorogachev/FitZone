@@ -13,6 +13,7 @@ import LogIn from '../src/components/Auth/Login';
 import MaybeShowNavBar from './components/MaybeShowNavBar';
 import RegisterForm from './components/Auth/Register';
 import ForgotPassword from './components/Auth/ForgotPassword';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
@@ -20,24 +21,39 @@ function App() {
   return (
     <>
     <MaybeShowNavBar>
-    <Navbar className='navbar' bg="white" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand className='logo' as={Link} to='/' ><img
+    <Navbar bg="light" fixed="top" collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand className='logo' as={Link} to='/'><img
       src={logo}
       width="35"
       height="35"
-    />  Fit Zone</Navbar.Brand>
+    />Fit Zone</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
-            <Nav.Link as={Link} to='/programs'>Programs</Nav.Link>
-            <Nav.Link as={Link} to='/schedule'>Schedule</Nav.Link>
             <Nav.Link as={Link} to='/classes' >Classes</Nav.Link>
-            <Nav.Link as={Link} to='/register' >Register</Nav.Link>
-           
+            <Nav.Link as={Link} to='/schedule'>Schedule</Nav.Link>
+            
+            <NavDropdown  title="Programs" id="collapsible-nav-dropdown">
+              <NavDropdown.Item as={Link} to='/classes'>Basic Fitness</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                New gym training
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Yoga training</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item  as={Link} to='/programs'>
+                All programs
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav>
+          <Nav.Link as={Link} to='/register' >Sign In/Sign Up</Nav.Link>
             
           </Nav>
-        </Container>
-      </Navbar>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
       </MaybeShowNavBar>
 
       <div>
