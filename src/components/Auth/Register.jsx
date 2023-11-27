@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import logo from '../../../public/assets/images/features-first-icon.png'
-import { database } from "../../firebase";
+import { database,provider } from "../../firebase";
+import { onAuthStateChanged } from 'firebase/auth';
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword,signInWithPopup
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../public/assets/css/RegisterForm.css";
@@ -40,10 +41,13 @@ function RegisterAndLogin() {
         });
     }
   };
+  
 
   const handleReset = () => {
     history("/reset");
   };
+
+  
 
   return (
     <div className="App">
@@ -76,6 +80,13 @@ function RegisterAndLogin() {
         <br />
         <input className="input-field" name="password" type="password" placeholder="Password" />
         <br />
+        <div>
+        
+        
+        
+       
+        
+    </div>
         <p className="forgot-password" onClick={handleReset}>Forgot Password?</p>
         <br />
         <button className="submit-button">{login ? "SignIn" : "SignUp"}</button>
@@ -83,4 +94,7 @@ function RegisterAndLogin() {
     </div>
   );
 }
+
+
 export default RegisterAndLogin;
+

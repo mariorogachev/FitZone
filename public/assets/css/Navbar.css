@@ -14,3 +14,11 @@
     font-size: 20px;
 
 }
+.signIn{
+    font-size: 20px;
+}
+.justify-content-end{
+    font-size: 20px;
+    display: flex;
+  justify-content: flex-end;
+}
