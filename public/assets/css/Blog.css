@@ -1,112 +1,117 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #232d39;
-    color: white;
-  }
-  
-  header {
-    
-    padding: 20px;
-    text-align: center;
-    color: #ed563b;
-  }
-  
-  header h1 {
-    margin: 0;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  #blogPosts {
-    display: grid;
-    gap: 20px;
-  }
-  
-  #blogPosts > div {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 5px;
-  }
-  
-  #blogPosts h2 {
-    margin-top: 0;
-  }
-  
-  #addPost {
-    margin-top: 20px;
-    
-  }
-  
-  #addPost input,
-  #addPost textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-  }
-  
-  #addPost textarea {
-    resize: vertical;
-    height: 100px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    background-color: #ed563b;
-  }
-  
-  button:hover {
-    background-color: #ff6e52;
-  }
-  
-  .add-post button {
-    /* ... previous styles ... */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;
-    margin: auto;
-    display: flex;
-    display: grid;
-    margin-bottom: 20px;
-  }
-  
-  .add-post button:hover {
-    background-color: #c24b33;
-    transform: scale(1.05);
-    
-  }
-  
-  /* Styles for Blog Posts section */
-  .blog-post {
-    /* ... previous styles ... */
-    transition: transform 0.2s ease;
-  }
-  
-  .blog-post:hover {
-    transform: translateY(-5px);
-  }
-  
-  .blog-post button {
-    /* ... previous styles ... */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align:center;
-    margin-right: 10px;
-    margin-top: 10px;
-  }
-  
-  .blog-post button:hover {
-    background-color: #c24b33;
-    transform: scale(1.05);
-  }
+/* BlogList.css */
+
+/* Overall container styles */
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* Header styles */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Form styles for adding a post */
+.add-post {
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-post input,
+.add-post textarea {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-post button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-post button:hover {
+  background-color: #0056b3;
+}
+
+/* Individual blog post styles */
+.blog-post {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Updated blog post background colors */
+.post-1 {
+  background-color: #ffd8b8; /* Light peach */
+}
+
+.post-2 {
+  background-color: #c9e4e7; /* Light blue */
+}
+
+.post-3 {
+  background-color: #f3d9e0; /* Light pink */
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+}
+
+.blog-post h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.blog-post p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.blog-post button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.blog-post button.edit {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.blog-post button.delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.blog-post button:hover {
+  filter: brightness(1.1);
+}
+
   
   

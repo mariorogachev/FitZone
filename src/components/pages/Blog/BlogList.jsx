@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import '../../../../public/assets/css/Blog.css'
+import { useClerk } from '@clerk/clerk-react';
 import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: "AIzaSyC3sLIbRGiSq6e12YLrHEz6OwzPqven5aA",
@@ -16,11 +17,13 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 function BlogList() {
+  const { user } = useClerk();
     const [editMode, setEditMode] = useState(null);
   const [editedPosts, setEditedPosts] = useState({});
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ title: '', content: '' });
 const [updatedPost, setUpdatedPost] = useState({ title: '', content: '' });
+const username1 = user.username;
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -35,14 +38,20 @@ const [updatedPost, setUpdatedPost] = useState({ title: '', content: '' });
   const handleAddPost = async () => {
     try {
       const postRef = collection(db, 'blogPosts');
-      await addDoc(postRef, newPost); // Assuming `newPost` is an object with `title` and `content` properties
-      setNewPost({ title: '', content: '' }); // Clear the input fields after adding the post
+  
+      const postData = {
+        title: newPost.title,
+        content: newPost.content,
+        username: username1, // Include the username fetched from Clerk
+      };
+  
+      await addDoc(postRef, postData);
+      setNewPost({ title: '', content: '' });
       fetchPosts(); // Fetch updated list of posts
     } catch (error) {
       console.error('Error adding document: ', error);
     }
   };
-
 
   
   
@@ -79,7 +88,7 @@ const [updatedPost, setUpdatedPost] = useState({ title: '', content: '' });
   return (
     <div className="App">
       <header>
-        <h1>Welcome to BlogList</h1>
+      <h1>Welcome, {username1}</h1>
       </header>
       <main>
         <section id="addPost" className="add-post">
@@ -129,6 +138,7 @@ const [updatedPost, setUpdatedPost] = useState({ title: '', content: '' });
                 <div>
                   <h2>{post.title}</h2>
                   <p>{post.content}</p>
+                  <p>Posted by: {post.username}</p>
                   <button onClick={() => setEditMode(post.id)}>Edit</button>
                   <button onClick={() => handleDeletePost(post.id)}>Delete</button>
                 </div>

@@ -4,7 +4,6 @@ import Classes from './components/pages/Classes';
 import Main from './components/pages/Main';
 import Programs from './components/pages/Programs'
 import Schedule from './components/pages/Schedule';
-import '../public/assets/css/Navbar.css'
 import RegisterForm from './components/Auth/Register';
 import ForgotPassword from './components/Auth/ForgotPassword';
 import NavbarComp from './components/Navbar';
@@ -17,9 +16,9 @@ import {
   SignUp,
 } from "@clerk/clerk-react";
 import { useNavigate } from 'react-router-dom';
-import ProtectedPage from './components/pages/ProtectetPage';
-
+import { dark } from '@clerk/themes';
 import BlogList from './components/pages/Blog/BlogList';
+import '../public/assets/css/SignIn.css'
 
 
 
@@ -36,7 +35,9 @@ function App() {
     <ClerkProvider
       publishableKey={clerkPubKey}
       navigate={(to) => navigate(to)}
+      
     >
+      
    <NavbarComp/>
 
       <div>
@@ -46,7 +47,19 @@ function App() {
           <Route path='/classes' element={<Classes/>}/>
           <Route path='/schedule' element={<Schedule/>}/>
           <Route path='/register' element={<RegisterForm/>}/>
-          <Route path='/blog' element={<BlogList/>}/>
+          <Route
+          path="/blog"
+          element={
+          <>
+            <SignedIn>
+              <BlogList />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+          }
+        />
           
           <Route
           path="/sign-in"
@@ -58,11 +71,11 @@ function App() {
         />
           <Route path='/reset' element={<ForgotPassword/>}/>
           <Route
-          path="/classes"
+          path="/blog"
           element={
           <>
             <SignedIn>
-              <Classes />
+              <BlogList />
             </SignedIn>
             <SignedOut>
               <RedirectToSignIn />

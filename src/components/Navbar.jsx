@@ -26,9 +26,9 @@ export default function NavbarComp() {
           <SignedIn><Nav.Link as={Link} to='/home'>Home</Nav.Link></SignedIn>
           <SignedOut><Nav.Link as={Link} to='/'>Home</Nav.Link></SignedOut>
             <Nav.Link as={Link} to='/classes' >Classes</Nav.Link>
-            <SignedIn>
+            
               <Nav.Link as={Link} to='/blog' >Blog</Nav.Link>
-              </SignedIn>
+              
               <SignedIn>
             <Nav.Link as={Link} to='/schedule'>Schedule</Nav.Link>
             </SignedIn>

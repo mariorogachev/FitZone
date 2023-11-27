@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../public/assets/css/RegisterForm.css";
-
+import '../../../public/assets/css/Blog.css'
 
 
 function RegisterAndLogin() {
