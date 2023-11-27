@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react";
 import logo from '../../../public/assets/images/features-first-icon.png'
-import { database,provider } from "../../firebase";
 import { onAuthStateChanged } from 'firebase/auth';
 import {
   createUserWithEmailAndPassword,

@@ -10,7 +10,7 @@ export default function Main (){
 
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `/register`; 
+    let path = `/sign-in`; 
     navigate(path);
   }
 

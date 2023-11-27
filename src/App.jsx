@@ -18,7 +18,9 @@ import {
 } from "@clerk/clerk-react";
 import { useNavigate } from 'react-router-dom';
 import ProtectedPage from './components/pages/ProtectetPage';
-import Blog from './components/pages/Blog';
+
+import BlogList from './components/pages/Blog/BlogList';
+
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
   
   const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
   const navigate = useNavigate();
+  
   return (
     <>
     <ClerkProvider
@@ -43,7 +46,8 @@ function App() {
           <Route path='/classes' element={<Classes/>}/>
           <Route path='/schedule' element={<Schedule/>}/>
           <Route path='/register' element={<RegisterForm/>}/>
-          <Route path='/blog' element={<Blog/>}/>
+          <Route path='/blog' element={<BlogList/>}/>
+          
           <Route
           path="/sign-in"
           element={<SignIn routing="path" path="/sign-in" />}

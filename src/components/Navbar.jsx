@@ -8,7 +8,6 @@ import '../../public/assets/css/Navbar.css'
 import logo from '../../public/assets/images/features-first-icon.png'
 import MaybeShowNavBar from './MaybeShowNavBar'
 import { SignedOut, UserButton,SignedIn } from '@clerk/clerk-react';
-import Blog from './pages/Blog';
 
 export default function NavbarComp() {
   return (
@@ -24,7 +23,8 @@ export default function NavbarComp() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+          <SignedIn><Nav.Link as={Link} to='/home'>Home</Nav.Link></SignedIn>
+          <SignedOut><Nav.Link as={Link} to='/'>Home</Nav.Link></SignedOut>
             <Nav.Link as={Link} to='/classes' >Classes</Nav.Link>
             <SignedIn>
               <Nav.Link as={Link} to='/blog' >Blog</Nav.Link>
