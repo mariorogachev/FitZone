@@ -2,19 +2,11 @@ import { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import '../../../../public/assets/css/Blog.css'
 import { useClerk } from '@clerk/clerk-react';
-import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-const firebaseConfig = {
-    apiKey: "AIzaSyC3sLIbRGiSq6e12YLrHEz6OwzPqven5aA",
-    authDomain: "fitzonelast.firebaseapp.com",
-    databaseURL: "https://fitzonelast-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "fitzonelast",
-    storageBucket: "fitzonelast.appspot.com",
-    messagingSenderId: "239081987995",
-    appId: "1:239081987995:web:f780f05f8e29c0fe2d4b3e"
-};
+import { getDoc,getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import db from '../../Firebase/Firestore';
+import filled from '../../../../public/assets/images/filled.png'
+import outlined from '../../../../public/assets/images/outline.png'
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 function BlogList() {
   const { user } = useClerk();
@@ -23,16 +15,31 @@ function BlogList() {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ title: '', content: '' });
 const [updatedPost, setUpdatedPost] = useState({ title: '', content: '' });
+const [commentText, setCommentText] = useState(''); // State to manage comment text
+const [liked, setLiked] = useState(false);
+
 const username1 = user.username;
   useEffect(() => {
     fetchPosts();
   }, []);
 
   const fetchPosts = async () => {
-    const postsRef = collection(db, 'blogPosts');
-    const snapshot = await getDocs(postsRef);
-    const postsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    setPosts(postsData);
+    try {
+      const postsRef = collection(db, 'blogPosts');
+      const snapshot = await getDocs(postsRef);
+      const postsData = snapshot.docs.map((doc) => {
+        const post = { id: doc.id, ...doc.data() };
+        if (!post.likes) {
+          post.likeCount = 0; // Set like count to 0 if 'likes' field is absent or empty
+        } else {
+          post.likeCount = post.likes.length;
+        }
+        return post;
+      });
+      setPosts(postsData);
+    } catch (error) {
+      console.error('Error fetching posts: ', error);
+    }
   };
 
   const handleAddPost = async () => {
@@ -83,73 +90,176 @@ const username1 = user.username;
       console.error('Error deleting document: ', error);
     }
   };
+
+  const handleLikePost = async (postId) => {
+    try {
+      const postRef = doc(db, 'blogPosts', postId);
+      const postDoc = await getDoc(postRef);
+  
+      if (postDoc.exists()) {
+        const post = postDoc.data();
+        const currentUser = user.id;
+  
+        // Check if the current user has already liked the post
+        if (!post.likes || !post.likes.includes(currentUser)) {
+          // If the user hasn't liked the post, add their ID to the likes array
+          const updatedLikes = post.likes ? [...post.likes, currentUser] : [currentUser];
+          await updateDoc(postRef, { likes: updatedLikes });
+        } else {
+          // If the user already liked the post, remove their ID from the likes array
+          const updatedLikes = post.likes.filter((userId) => userId !== currentUser);
+          await updateDoc(postRef, { likes: updatedLikes });
+        }
+  
+        fetchPosts(); // Fetch updated list of posts after the like status is toggled
+      }
+    } catch (error) {
+      console.error('Error toggling like: ', error);
+    }
+  };
+  
+  // Define a function to add comments to a post
+  const handleAddComment = async (postId) => {
+    try {
+      const postRef = doc(db, 'blogPosts', postId);
+  
+      // Fetch the post to append the comment
+      const postDoc = await getDoc(postRef);
+      if (postDoc.exists()) {
+        const post = postDoc.data();
+        const newComment = {
+          text: commentText,
+          userId: username1, // Add the user ID who posted the comment
+        };
+  
+        const updatedComments = post.comments ? [...post.comments, newComment] : [newComment];
+        await updateDoc(postRef, { comments: updatedComments });
+        fetchPosts(); // Fetch updated list of posts after the comment is added
+        setCommentText(''); // Clear commentText state after adding the comment
+      }
+    } catch (error) {
+      console.error('Error adding comment: ', error);
+    }
+  };
   
 
-  return (
-    <div className="App">
-      <header>
+
+
+return (
+  <div className="App">
+    <header>
       <h1>Welcome, {username1}</h1>
-      </header>
-      <main>
-        <section id="addPost" className="add-post">
-          <input
-            type="text"
-            placeholder="Title"
-            value={newPost.title}
-            onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-            className="input-field"
-          />
-          <textarea
-            placeholder="Content"
-            value={newPost.content}
-            onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-            className="input-field"
-          ></textarea>
-          <button onClick={handleAddPost}>Add Post</button>
-        </section>
-        <section id="blogPosts" className="blog-posts">
-          {/* Display blog posts */}
-          {posts.map((post) => (
-            <div key={post.id} className="blog-post">
-              {editMode === post.id ? (
-                <div>
-                  <input
-                    type="text"
-                    value={editedPosts[post.id]?.title || post.title}
-                    onChange={(e) =>
-                      setEditedPosts({
-                        ...editedPosts,
-                        [post.id]: { ...editedPosts[post.id], title: e.target.value },
-                      })
-                    }
-                  />
-                  <textarea
-                    value={editedPosts[post.id]?.content || post.content}
-                    onChange={(e) =>
-                      setEditedPosts({
-                        ...editedPosts,
-                        [post.id]: { ...editedPosts[post.id], content: e.target.value },
-                      })
-                    }
-                  ></textarea>
-                  <button onClick={() => handleEditPost(post.id)}>Save</button>
+    </header>
+    <main>
+      <section id="addPost" className="add-post">
+        {/* Style for adding new post */}
+        <input
+          type="text"
+          placeholder="Title"
+          value={newPost.title}
+          onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+          className="input-field"
+        />
+        <textarea
+          placeholder="Content"
+          value={newPost.content}
+          onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+          className="input-field"
+        ></textarea>
+        <button onClick={handleAddPost}>Add Post</button>
+      </section>
+      <section id="blogPosts" className="blog-posts">
+        {/* Display blog posts */}
+        {posts.map((post) => (
+          <div key={post.id} className="blog-post">
+            {editMode === post.id ? (
+              <div>
+                {/* Style for editing posts */}
+                <input
+                  type="text"
+                  value={editedPosts[post.id]?.title || post.title}
+                  onChange={(e) =>
+                    setEditedPosts({
+                      ...editedPosts,
+                      [post.id]: { ...editedPosts[post.id], title: e.target.value },
+                    })
+                  }
+                />
+                <textarea
+                  value={editedPosts[post.id]?.content || post.content}
+                  onChange={(e) =>
+                    setEditedPosts({
+                      ...editedPosts,
+                      [post.id]: { ...editedPosts[post.id], content: e.target.value },
+                    })
+                  }
+                ></textarea>
+                <button onClick={() => handleEditPost(post.id)}>Save</button>
+              </div>
+            ) : (
+              <div>
+                {/* Style for displaying posts */}
+                <h2>{post.title}</h2>
+                <p>{post.content}</p>
+                <p>Posted by: {post.username}</p>
+                <button onClick={() => handleLikePost(post.id)}>
+  {post.likes && post.likes.includes(user.id) ? (
+    <img
+      src={filled} // Path to your filled thumbs-up icon
+      alt="thumbs up filled"
+      width="24"
+      height="24"
+    />
+  ) : (
+    <img
+      src={outlined} // Path to your outline thumbs-up icon
+      alt="thumbs up outline"
+      width="24"
+      height="24"
+    />
+  )}
+</button><span>{post.likeCount}</span>
+                <input
+                  type="text"
+                  placeholder="Add a comment"
+                  value={commentText}
+                  onChange={(e) => setCommentText(e.target.value)}
+                  className="input-field"
+                />
+                <button onClick={() => handleAddComment(post.id)}>Comment</button>
+                {/* Style for displaying comments */}
+                <div className="comments-section">
+                  {post.comments && post.comments.length > 0 ? (
+                    <div>
+                      <h3>Comments:</h3>
+                      {post.comments.map((comment, index) => (
+                        <div key={index} className="comment">
+                          <p>{comment.text}</p>
+                          <p>Commented by: {comment.userId}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>No comments yet</p>
+                  )}
                 </div>
-              ) : (
-                <div>
-                  <h2>{post.title}</h2>
-                  <p>{post.content}</p>
-                  <p>Posted by: {post.username}</p>
-                  <button onClick={() => setEditMode(post.id)}>Edit</button>
-                  <button onClick={() => handleDeletePost(post.id)}>Delete</button>
-                </div>
-              )}
-            </div>
-          ))}
-        </section>
-      </main>
-    </div>
-  );
-}
+                {/* Style for edit and delete buttons */}
+                {post.username === username1 && (
+                  <div>
+                    <button onClick={() => setEditMode(post.id)}>Edit</button>
+                    <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </section>
+    </main>
+  </div>
+);
+
+            }
 
 export default BlogList;
 
