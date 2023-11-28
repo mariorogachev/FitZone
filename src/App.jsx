@@ -21,6 +21,7 @@ import BlogList from './components/pages/Blog/BlogList';
 import '../public/assets/css/SignIn.css'
 
 
+
 function App() {
   if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
     throw new Error("Missing Publishable Key")
@@ -45,6 +46,7 @@ function App() {
         <Route path='/programs' element={<Programs/>}/>
           <Route path='/classes' element={<Classes/>}/>
           <Route path='/schedule' element={<Schedule/>}/>
+          
           <Route path='/register' element={<RegisterForm/>}/>
           <Route
           path="/blog"

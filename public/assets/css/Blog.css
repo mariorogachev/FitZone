@@ -206,5 +206,7 @@ header {
   right: 10px; /* Adjust right position as needed */
   /* Additional styles for the buttons */
 }
-  
+.scrollable-content::-webkit-scrollbar {
+  display: none;
+}
   

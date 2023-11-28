@@ -1,11 +1,11 @@
 .cl-rootBox{
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-  }
-  .cl-card{
-    
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+.cl-signIn-start{
+  
   position: absolute;
   top: 50%;
   left: 50%;
@@ -18,6 +18,7 @@
     height: 150%;
     padding-left: 110px;
     
-
+  
   }
+    
   

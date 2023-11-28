@@ -6,7 +6,7 @@ import { getDoc,getFirestore, collection, getDocs, addDoc, doc, updateDoc, delet
 import db from '../../Firebase/Firestore';
 import filled from '../../../../public/assets/images/filled.png'
 import outlined from '../../../../public/assets/images/outline.png'
-
+import { Link } from 'react-router-dom';
 
 function BlogList() {
   const { user } = useClerk();
@@ -154,11 +154,13 @@ return (
       <section id="addPost" className="add-post">
         {/* Style for adding new post */}
         <input
+        
           type="text"
           placeholder="Title"
           value={newPost.title}
           onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
           className="input-field"
+          
         />
         <textarea
           placeholder="Content"
@@ -218,6 +220,8 @@ return (
       height="24"
     />
   )}
+  
+
 </button><span>{post.likeCount}</span>
                 <input
                   type="text"

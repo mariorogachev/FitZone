@@ -47,8 +47,11 @@ export default function NavbarComp() {
             
             
           <SignedOut><Nav.Link as={Link} to='/sign-in' >Sign In</Nav.Link></SignedOut>
-          <Navbar.Text>
+          <Navbar.Text className='ms-auto'>
             <UserButton/>
+          </Navbar.Text>
+          <Navbar.Text className='ms-auto'>
+            
           </Navbar.Text>
     
           <Navbar.Collapse className="justify-content-end">
