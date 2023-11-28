@@ -20,8 +20,6 @@ import { dark } from '@clerk/themes';
 import BlogList from './components/pages/Blog/BlogList';
 import '../public/assets/css/SignIn.css'
 
-import PostDetail from './components/pages/Blog/PostDetail';
-
 
 function App() {
   if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
@@ -47,7 +45,6 @@ function App() {
         <Route path='/programs' element={<Programs/>}/>
           <Route path='/classes' element={<Classes/>}/>
           <Route path='/schedule' element={<Schedule/>}/>
-          
           <Route path='/register' element={<RegisterForm/>}/>
           <Route
           path="/blog"

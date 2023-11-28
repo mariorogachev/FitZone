@@ -150,7 +150,7 @@ return (
     <header>
       <h1>Welcome, {username1}</h1>
     </header>
-    <main>
+    <main className="scrollable-content">
       <section id="addPost" className="add-post">
         {/* Style for adding new post */}
         <input
@@ -226,7 +226,7 @@ return (
                   onChange={(e) => setCommentText(e.target.value)}
                   className="input-field"
                 />
-                <button onClick={() => handleAddComment(post.id)}>Comment</button>
+                <button className='commentButton' onClick={() => handleAddComment(post.id)}>Comment</button>
                 {/* Style for displaying comments */}
                 <div className="comments-section">
                   {post.comments && post.comments.length > 0 ? (
@@ -245,9 +245,9 @@ return (
                 </div>
                 {/* Style for edit and delete buttons */}
                 {post.username === username1 && (
-                  <div>
-                    <button onClick={() => setEditMode(post.id)}>Edit</button>
-                    <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+                  <div className="edit-delete-buttons">
+                    <button className='editButton' onClick={() => setEditMode(post.id)}>Edit</button>
+                    <button className='deleteButton' onClick={() => handleDeletePost(post.id)}>Delete</button>
                   </div>
                 )}
               </div>

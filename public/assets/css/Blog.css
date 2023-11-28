@@ -105,13 +105,22 @@ h1 {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.blog-post button.edit {
-  background-color: #ffc107;
-  color: #333;
+.commentButton {
+  background-color:#ed563b;
+  color: #fff;
+}
+.editButton {
+  background-color:#ed563b;
+  color: #fff;
+  margin-right: 5px;
+}
+.deleteButton {
+  background-color:#ed563b;
+  color: #fff;
 }
 
 .blog-post button.delete {
-  background-color: #dc3545;
+  background-color: #ed563b;
   color: #fff;
 }
 
@@ -159,6 +168,43 @@ h1 {
     margin-bottom: 12px;
   }
 }
+.scrollable-content {
+  max-height: 80vh; /* Set maximum height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff; /* Change this to match your header's background color */
+  z-index: 1000; /* Ensure the header is above other content */
+}
 
+.add-post {
+  position: fixed;
+  bottom: 20px; /* Adjust the distance from the bottom as needed */
+  right: 20px; /* Adjust the distance from the right as needed */
+  z-index: 1000; /* Ensure it's above other content */
+}
+.blog-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  
+}
+
+.blog-post { /* Three posts per row with 20px gap */
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.edit-delete-buttons {
+  position: absolute;
+  top: 10px; /* Adjust top position as needed */
+  right: 10px; /* Adjust right position as needed */
+  /* Additional styles for the buttons */
+}
   
   
