@@ -1,17 +1,17 @@
-/* BlogList.css */
-
 /* Overall container styles */
 .App {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #232d39;
+  
 }
 
 /* Header styles */
-header {
+.header1{
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 70px;
 }
 
 h1 {
@@ -21,11 +21,14 @@ h1 {
 
 /* Form styles for adding a post */
 .add-post {
-  margin-bottom: 20px;
+  position: fixed;
+  bottom: 20px;
+ right: 20px;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 .add-post input,
@@ -52,13 +55,7 @@ h1 {
 .add-post button:hover {
   background-color: #e08b7c;
 }
-.blog-post input[type="text"],
-.blog-post textarea {
-  width: calc(100% - 20px); /* Adjust the width based on your design */
-  margin-bottom: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
-}
+
 /* Individual blog post styles */
 .blog-post {
   background-color: #fff;
@@ -67,19 +64,6 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-}
-
-/* Updated blog post background colors */
-.post-1 {
-  background-color: #ffd8b8; /* Light peach */
-}
-
-.post-2 {
-  background-color: #c9e4e7; /* Light blue */
-}
-
-.post-3 {
-  background-color: #f3d9e0; /* Light pink */
 }
 
 .blog-post:hover {
@@ -106,16 +90,18 @@ h1 {
 }
 
 .commentButton {
-  background-color:#ed563b;
+  background-color: #ed563b;
   color: #fff;
 }
+
 .editButton {
-  background-color:#ed563b;
+  background-color: #ed563b;
   color: #fff;
   margin-right: 5px;
 }
+
 .deleteButton {
-  background-color:#ed563b;
+  background-color: #ed563b;
   color: #fff;
 }
 
@@ -127,86 +113,150 @@ h1 {
 .blog-post button:hover {
   filter: brightness(1.1);
 }
-/* Blog.css */
 
-/* Styles for larger screens */
-/* You can adjust these values based on your design */
-.blog-post {
-  padding: 20px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-}
-
-.post-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.post-content {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.post-info {
-  font-style: italic;
-  color: #888;
-}
-
-/* Styles for smaller screens (mobile devices) */
-@media screen and (max-width: 768px) {
-  .blog-post {
-    padding: 15px;
-  }
-
-  .post-title {
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-
-  .post-content {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-}
-.scrollable-content {
-  max-height: 80vh; /* Set maximum height as needed */
-  overflow-y: auto; /* Enable vertical scrolling */
-}
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #fff; /* Change this to match your header's background color */
-  z-index: 1000; /* Ensure the header is above other content */
-}
-
-.add-post {
-  position: fixed;
-  bottom: 20px; /* Adjust the distance from the bottom as needed */
-  right: 20px; /* Adjust the distance from the right as needed */
-  z-index: 1000; /* Ensure it's above other content */
-}
+/* Larger screens */
 .blog-posts {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  
+  max-height: 100vh; /* Set a fixed maximum height */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
 }
 
-.blog-post { /* Three posts per row with 20px gap */
+.blog-post {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 20px;
 }
+
 .edit-delete-buttons {
   position: absolute;
-  top: 10px; /* Adjust top position as needed */
-  right: 10px; /* Adjust right position as needed */
-  /* Additional styles for the buttons */
+  top: 10px;
+  right: 10px;
 }
+
 .scrollable-content::-webkit-scrollbar {
   display: none;
 }
+
+/* Comment section styles */
+.comments {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
   
+}
+
+.comment {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  color: #333;
+  font-size: 15px;
+}
+
+.comment p::before {
+  content: attr(data-user) ": ";
+  font-weight: bold;
+  color: #007bff;
+}
+
+.comments-section {
+  margin-top: 20px;
+}
+.input-field{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.counter{
+  margin-left: 10px;
+}
+.scrollable-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1200px, 1fr)); /* Change the width as needed */
+  grid-auto-rows: 800px; /* Adjust the height of each row */
+  gap: 20px; /* Adjust the gap between posts */
+  max-height: 80vh; /* Adjust the maximum height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-left: 200px;
+}
+.blog-post {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; 
+  height: 400px;
+  width: 400px;
+}
+/* Hide the scrollbar */
+.blog-post::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.deleteButton{
+  
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  
+    
+}
+.comment {
+  display: flex;
+  justify-content: space-between;
+}
+.comment-content {
+  flex-grow: 1; /* Allow comment content to take available space */
+}
+.blog-post.edit-mode {
+  /* Apply styles for edit mode */
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 400px;
+  width: 400px;
+}
+
+.blog-post.edit-mode h2,
+.blog-post.edit-mode p {
+  /* Match the font styles with the non-edit mode */
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.blog-post.edit-mode button {
+  /* Match the button styles with the non-edit mode */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #ed563b;
+  color: #fff;
+}
+
+.blog-post.edit-mode button:hover {
+  filter: brightness(1.1);
+}

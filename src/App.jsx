@@ -46,21 +46,9 @@ function App() {
         <Route path='/programs' element={<Programs/>}/>
           <Route path='/classes' element={<Classes/>}/>
           <Route path='/schedule' element={<Schedule/>}/>
-          
+          <Route path = '/blog' element={<BlogList/>}/>
           <Route path='/register' element={<RegisterForm/>}/>
-          <Route
-          path="/blog"
-          element={
-          <>
-            <SignedIn>
-              <BlogList />
-            </SignedIn>
-            <SignedOut>
-              <RedirectToSignIn />
-            </SignedOut>
-          </>
-          }
-        />
+          
           
           <Route
           path="/sign-in"
@@ -71,19 +59,7 @@ function App() {
           element={<SignUp routing="path" path="/sign-up" />}
         />
           <Route path='/reset' element={<ForgotPassword/>}/>
-          <Route
-          path="/blog"
-          element={
-          <>
-            <SignedIn>
-              <BlogList />
-            </SignedIn>
-            <SignedOut>
-              <RedirectToSignIn />
-            </SignedOut>
-          </>
-          }
-        />
+          
         
 
           
