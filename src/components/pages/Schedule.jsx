@@ -120,7 +120,7 @@ const Schedule = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h2>My Schedule</h2>
+              <h2 className='H2'>My Schedule</h2>
               <div className="schedule-form">
                 <label className='day' htmlFor="day">Day:</label>
                 <select
