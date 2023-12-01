@@ -12,13 +12,14 @@ import { useNavigate } from 'react-router-dom';
 function BlogList() {
   const { user } = useClerk();
   const navigate = useNavigate();
-
+  const [isPostValid, setIsPostValid] = useState(false);
   const [editMode, setEditMode] = useState(null);
   const [editedPosts, setEditedPosts] = useState({});
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ title: '', content: '' });
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
 
   useEffect(() => {
@@ -47,6 +48,11 @@ function BlogList() {
   };
 
   const handleAddPost = async () => {
+    if (!newPost.title.trim() || !newPost.content.trim()) {
+      setErrorMessage('Title and Content cannot be empty.');
+      return;
+    }
+  
     try {
       const postRef = collection(db, 'blogPosts');
       const postData = {
@@ -56,11 +62,17 @@ function BlogList() {
       };
       await addDoc(postRef, postData);
       setNewPost({ title: '', content: '' });
+      setErrorMessage(''); // Clear error message if successful
       fetchPosts();
     } catch (error) {
       console.error('Error adding document: ', error);
+      setErrorMessage('Failed to add the post. Please try again.'); // Set error message on failure
     }
   };
+  useEffect(() => {
+    // Check if both title and content are not empty strings
+    setIsPostValid(newPost.title.trim() !== '' && newPost.content.trim() !== '');
+  }, [newPost])
 
   const handleEditPost = async (postId) => {
     try {
@@ -199,27 +211,28 @@ useEffect(() => {
         <h1>Welcome, {user ? user.username : 'Guest'}</h1>
       </header>
       <main className="scrollable-content">
-        <section id="addPost" className="add-post">
-          {isLoggedIn && (
-            <React.Fragment>
-              <input
-                type="text"
-                placeholder="Title"
-                value={newPost.title}
-                onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-                className="input-field"
-              />
-              <textarea
-                placeholder="Content"
-                value={newPost.content}
-                onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-                className="input-field"
-              ></textarea>
-              <button onClick={handleAddPost}>Add Post</button>
-            </React.Fragment>
-          )}
-        </section>
-        
+      <section id="addPost" className="add-post">
+        {isLoggedIn && (
+          <React.Fragment>
+            {/* Error message display */}
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            <input
+              type="text"
+              placeholder="Title"
+              value={newPost.title}
+              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+              className="input-field"
+            />
+            <textarea
+              placeholder="Content"
+              value={newPost.content}
+              onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+              className="input-field"
+            ></textarea>
+            <button onClick={handleAddPost}>Add Post</button>
+          </React.Fragment>
+        )}
+      </section>
         <section id="blogPosts" className="blog-posts">
           {posts.map((post) => (
             <div key={post.id} className={`blog-post ${editMode === post.id ? 'edit-mode' : ''}`}>
@@ -255,9 +268,9 @@ useEffect(() => {
             ) : (
               <div>
                 {/* Style for displaying posts */}
-                <h2>{post.title}</h2>
-                <p>{post.content}</p>
-                <p>Posted by: {post.username}</p>
+                <h2 className='title'>{post.title}</h2>
+                <p className='content'>{post.content}</p>
+                <p className='username'>Posted by: {post.username}</p>
                 <button onClick={() => handleLikePost(post.id)}>
   {post.likes && post.likes.includes(user.id) ? (
     <img

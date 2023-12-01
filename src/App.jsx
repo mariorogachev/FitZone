@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import { dark } from '@clerk/themes';
 import BlogList from './components/pages/Blog/BlogList';
 import '../public/assets/css/SignIn.css'
+import Home from './components/pages/Home';
 
 
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='/schedule' element={<Schedule/>}/>
           <Route path = '/blog' element={<BlogList/>}/>
           <Route path='/register' element={<RegisterForm/>}/>
+          <Route path='/home' element={<Home/>}/>
           
           
           <Route
