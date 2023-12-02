@@ -4,15 +4,15 @@
 ## Running the Application
 
 
-Node.js and npm should be installed. You can download and install them from Node.js's official website.
+Node.js and npm should be installed. You can download and install them from Node.js's official website.Git should be also installed
 Clone the Repository
 
 ## Clone Repositories
 ```
-gh repo clone mariorogachev/react-js-project
+git clone https://github.com/mariorogachev/react-js-project.git
 ```
 ```
-cd your-repo
+cd react-js-project
 ```
 
 #Install Dependencies
