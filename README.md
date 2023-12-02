@@ -9,13 +9,21 @@ Clone the Repository
 
 
 Copy code
-```gh repo clone mariorogachev/react-js-project```
-```cd your-repo```
+```
+gh repo clone mariorogachev/react-js-project
+```
+```
+cd your-repo
+```
 
 Install Dependencies
-```npm install```
+```
+npm install
+```
 
 Start the Development Server
-```npm run dev``````
+```
+npm run dev
+```
 
 This command will start the Vite development server and launch the React.js application in your default browser.
