@@ -50,6 +50,6 @@ React, Reactstrap, React Router, React Bootstrap, Vite, Clerk Auth
 4. Classes/Programs page is not functional, only basic routing.
     
 ## Firebase Database
-Used firebase as a db where is stored my blog and my schedule
+Used firebase as a db where I stored my blog and my schedule
 ## Clerk Auth
 Authentication is handled by Clerk Auth
