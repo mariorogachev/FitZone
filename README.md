@@ -1,7 +1,10 @@
 # FitZone Project
-<img src="/svgs/bootstrap (1).svg" alt="Bootstrap" width=70>
-<img src="https://cdn.simpleicons.org/simpleicons/000/fff" alt="Simple Icons" width=70>
-<img src="https://cdn.simpleicons.org/simpleicons/000/fff" alt="Simple Icons" width=70>
+<img height="32" width="32" src="https://cdn.simpleicons.org/React/#fff"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/Bootstrap/"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/Clerk/"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/JavaScript/"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/ReactRouter/"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/FireBase/"/>
 
 ## Running the Application
 
