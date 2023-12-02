@@ -15,7 +15,7 @@ git clone https://github.com/mariorogachev/react-js-project.git
 cd react-js-project
 ```
 
-#Install Dependencies
+## Install Dependencies
 ```
 npm install
 ```
@@ -31,7 +31,7 @@ This command will start the Vite development server and launch the React.js appl
 
 FitZone is a gym website with a community-focused blog that bridges members through shared experiences and fitness tips. It showcases diverse gym programs and classes, enabling easy sign-ups, while also serving as an information hub for schedules, trainer details, and gym events. With an intuitive interface and interactive features, FitZone aims to foster connections, engagement, and a more enriched gym experience for all members.
 ## Used
-React
+React, Reactstrap, React Router, React Bootstrap, Vite, Clerk Auth
 
 ## Deployed Project Showcase
 
