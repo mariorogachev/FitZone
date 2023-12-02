@@ -26,7 +26,7 @@ npm run dev
 
 This command will start the Vite development server and launch the React.js application in your default browser.
 
-## Project Overview
+# Project Overview
 
 FitZone is a gym website with a community-focused blog that bridges members through shared experiences and fitness tips. It showcases diverse gym programs and classes, enabling easy sign-ups, while also serving as an information hub for schedules, trainer details, and gym events. With an intuitive interface and interactive features, FitZone aims to foster connections, engagement, and a more enriched gym experience for all members.
 ## Used
@@ -36,7 +36,7 @@ React, Reactstrap, React Router, React Bootstrap, Vite, Clerk Auth
 
 **FitZone** is deployed on a free hosting service [Netlify](https://www.netlify.com/), providing you with the opportunity to experience its features firsthand. To access the live version, simply visit [FitZone live](https://silly-bienenstitch-b05513.netlify.app/).
 
-## Warnings
+# Warnings
 
 1. Best to be used on desktop with resolution 1920x1080 (cuz my responsive skills aint that great)
 2. Developed on Google Chrome
