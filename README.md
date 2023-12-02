@@ -49,3 +49,7 @@ React, Reactstrap, React Router, React Bootstrap, Vite, Clerk Auth
 3. You can now post a blog in the blog page where you can Edit/Delete your own blogs, you can comment and delete the comment that you posted
 4. Classes/Programs page is not functional, only basic routing.
     
+## Firebase Database
+Used firebase as a db where is stored my blog and my schedule
+## Clerk Auth
+Authentication is handled by Clerk Auth
