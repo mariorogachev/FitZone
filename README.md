@@ -1,5 +1,5 @@
 # FitZone Project
-<img height="32" width="32" src="https://cdn.simpleicons.org/React/#fff"/><img height="32" width="32" src="https://cdn.simpleicons.org/Bootstrap/"/><img height="32" width="32" src="https://cdn.simpleicons.org/Clerk/"/><img height="32" width="32" src="https://cdn.simpleicons.org/JavaScript/"/><img height="32" width="32" src="https://cdn.simpleicons.org/ReactRouter/"/><img height="32" width="32" src="https://cdn.simpleicons.org/FireBase/"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/React/#fff"/>  <img height="32" width="32" src="https://cdn.simpleicons.org/Bootstrap/"/>  <img height="32" width="32" src="https://cdn.simpleicons.org/Clerk/"/>  <img height="32" width="32" src="https://cdn.simpleicons.org/JavaScript/"/>  <img height="32" width="32" src="https://cdn.simpleicons.org/ReactRouter/"/>  <img height="32" width="32" src="https://cdn.simpleicons.org/FireBase/"/>
 
 ## Running the Application
 
