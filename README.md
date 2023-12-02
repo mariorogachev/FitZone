@@ -1,11 +1,10 @@
 # FitZone Project
 <img height="32" width="32" src="https://cdn.simpleicons.org/React/#fff"/>     <img height="32" width="32" src="https://cdn.simpleicons.org/Bootstrap/"/>               <img height="32" width="32" src="https://cdn.simpleicons.org/Clerk/"/>               <img height="32" width="32" src="https://cdn.simpleicons.org/JavaScript/"/>               <img height="32" width="32" src="https://cdn.simpleicons.org/ReactRouter/"/>               <img height="32" width="32" src="https://cdn.simpleicons.org/FireBase/"/>               <img height="32" width="32" src="https://cdn.simpleicons.org/Vite/"/>
 
-## Running the Application
+# Running the Application
 
 
 Node.js and npm should be installed. You can download and install them from Node.js's official website.Git should be also installed
-Clone the Repository
 
 ## Clone Repositories
 ```
