@@ -227,7 +227,7 @@ useEffect(() => {
               placeholder="Content"
               value={newPost.content}
               onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-              className="input-field"
+              className="input-field1"
             ></textarea>
             <button onClick={handleAddPost}>Add Post</button>
           </React.Fragment>
@@ -274,14 +274,14 @@ useEffect(() => {
                 <button onClick={() => handleLikePost(post.id)}>
   {post.likes && post.likes.includes(user.id) ? (
     <img
-      src={filled} // Path to your filled thumbs-up icon
+      src={filled} 
       alt="thumbs up filled"
       width="24"
       height="24"
     />
   ) : (
     <img
-      src={outlined} // Path to your outline thumbs-up icon
+      src={outlined} 
       alt="thumbs up outline"
       width="24"
       height="24"
